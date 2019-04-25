@@ -143,3 +143,34 @@ class BookShelf:
 
 bs = BookShelf([dc_book, dc_book2, dc_book3])
 print(line(), bs)
+
+
+class MayBot:
+    """
+    demonstrates the usage of 'dunder' methods in your classes
+
+    these double underscore methods allow your classes to emulate builitn
+    types and be compatible with the rest of python itself.
+    """
+    def __init__(self, value, max_repeats):
+        self.value = value
+        self.max_repeats = max_repeats
+        self.count = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.count >= self.max_repeats:
+            raise StopIteration
+        self.count += 1
+        return self.value
+
+
+may_bot_2019 = MayBot('Brexit means Brexit.', 5)
+for soundbite in may_bot_2019:
+    print(line(), soundbite)
+
+may_bot_2018 = MayBot('Strong and stable.', 5)
+for soundbite in may_bot_2018:
+    print(line(), soundbite)
